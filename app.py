@@ -53,4 +53,4 @@ with gr.Blocks(title="Python ML Cheat Sheets") as demo:
 
     topic.change(fn=load_cheatsheet, inputs=topic, outputs=content)
 
-demo.launch(ssr_mode=False)
+demo.launch(server_name="0.0.0.0", server_port=7860, ssr_mode=False)

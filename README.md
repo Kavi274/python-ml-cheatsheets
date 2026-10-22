@@ -1,3 +1,14 @@
+---
+title: Python ML Cheat Sheets
+emoji: 🤖
+colorFrom: red
+colorTo: orange
+sdk: gradio
+sdk_version: "4.44.0"
+app_file: app.py
+pinned: false
+---
+
 # Python ML Cheat Sheets
 
 [![Stars](https://img.shields.io/github/stars/Kavi274/python-ml-cheatsheets?style=social)](https://github.com/Kavi274/python-ml-cheatsheets/stargazers)

@@ -3,7 +3,9 @@ title: Python ML Cheat Sheets
 emoji: 🤖
 colorFrom: red
 colorTo: yellow
-sdk: docker
+sdk: gradio
+sdk_version: "5.9.1"
+app_file: app.py
 pinned: false
 ---
 

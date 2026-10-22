@@ -1,3 +1,12 @@
+import huggingface_hub
+if not hasattr(huggingface_hub, "HfFolder"):
+    class HfFolder:
+        @staticmethod
+        def get_token(): return None
+        @staticmethod
+        def save_token(token): pass
+    huggingface_hub.HfFolder = HfFolder
+
 import gradio as gr
 import os
 

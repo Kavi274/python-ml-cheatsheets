@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Python ML Cheat Sheets</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css"/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #0d1117;
+      color: #e6edf3;
+      display: flex;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    /* ── Sidebar ── */
+    #sidebar {
+      width: 260px;
+      min-width: 260px;
+      background: #161b22;
+      border-right: 1px solid #30363d;
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+    }
+
+    #sidebar-header {
+      padding: 20px 16px 12px;
+      border-bottom: 1px solid #30363d;
+    }
+    #sidebar-header h1 {
+      font-size: 15px;
+      font-weight: 700;
+      color: #f0f6fc;
+      line-height: 1.4;
+    }
+    #sidebar-header p {
+      font-size: 12px;
+      color: #8b949e;
+      margin-top: 4px;
+    }
+
+    #star-btn {
+      display: block;
+      margin: 12px 16px 0;
+      background: #238636;
+      color: #fff;
+      text-decoration: none;
+      text-align: center;
+      padding: 7px 12px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
+    #star-btn:hover { background: #2ea043; }
+
+    #topic-list { padding: 8px 0; }
+
+    .topic-btn {
+      display: block;
+      width: 100%;
+      text-align: left;
+      background: none;
+      border: none;
+      color: #c9d1d9;
+      padding: 9px 16px;
+      font-size: 13.5px;
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+      border-left: 3px solid transparent;
+    }
+    .topic-btn:hover {
+      background: #21262d;
+      color: #f0f6fc;
+    }
+    .topic-btn.active {
+      background: #21262d;
+      color: #f78166;
+      border-left-color: #f78166;
+      font-weight: 600;
+    }
+
+    /* ── Main Content ── */
+    #main {
+      flex: 1;
+      overflow-y: auto;
+      padding: 32px 40px;
+      max-width: 900px;
+    }
+
+    #content h1 { font-size: 26px; margin-bottom: 8px; color: #f0f6fc; }
+    #content h2 {
+      font-size: 18px;
+      margin: 28px 0 10px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid #30363d;
+      color: #f0f6fc;
+    }
+    #content h3 { font-size: 15px; margin: 18px 0 8px; color: #e6edf3; }
+    #content p  { line-height: 1.7; color: #c9d1d9; margin-bottom: 10px; }
+    #content a  { color: #58a6ff; text-decoration: none; }
+    #content a:hover { text-decoration: underline; }
+
+    #content pre {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 8px;
+      padding: 16px;
+      overflow-x: auto;
+      margin: 12px 0;
+    }
+    #content code {
+      font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+      font-size: 13px;
+    }
+    #content p code, #content li code {
+      background: #21262d;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 12.5px;
+      color: #ff7b72;
+    }
+
+    #content table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 14px 0;
+      font-size: 14px;
+    }
+    #content th {
+      background: #21262d;
+      color: #f0f6fc;
+      padding: 8px 12px;
+      text-align: left;
+      border: 1px solid #30363d;
+    }
+    #content td {
+      padding: 7px 12px;
+      border: 1px solid #30363d;
+      color: #c9d1d9;
+    }
+    #content tr:nth-child(even) td { background: #161b22; }
+
+    #content ul, #content ol {
+      padding-left: 24px;
+      margin-bottom: 10px;
+      color: #c9d1d9;
+      line-height: 1.8;
+    }
+    #content hr {
+      border: none;
+      border-top: 1px solid #30363d;
+      margin: 20px 0;
+    }
+    #content blockquote {
+      border-left: 4px solid #30363d;
+      padding: 4px 16px;
+      color: #8b949e;
+      margin: 12px 0;
+    }
+
+    #loading {
+      color: #8b949e;
+      font-size: 14px;
+      margin-top: 60px;
+      text-align: center;
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: #30363d; border-radius: 3px; }
+  </style>
+</head>
+<body>
+
+<nav id="sidebar">
+  <div id="sidebar-header">
+    <h1>🤖 Python ML<br>Cheat Sheets</h1>
+    <p>No fluff. Just code.</p>
+  </div>
+  <a id="star-btn" href="https://github.com/Kavi274/python-ml-cheatsheets" target="_blank">
+    ⭐ Star on GitHub
+  </a>
+  <div id="topic-list"></div>
+</nav>
+
+<main id="main">
+  <div id="content"><div id="loading">Loading...</div></div>
+</main>
+
+<script>
+  const TOPICS = [
+    { label: "🔢  NumPy",                file: "cheatsheets/01_numpy.md" },
+    { label: "🐼  Pandas",               file: "cheatsheets/02_pandas.md" },
+    { label: "⚙️  Scikit-learn",          file: "cheatsheets/03_scikit_learn.md" },
+    { label: "📊  Matplotlib & Seaborn",  file: "cheatsheets/04_matplotlib_seaborn.md" },
+    { label: "🧹  Data Preprocessing",    file: "cheatsheets/05_data_preprocessing.md" },
+    { label: "🛠️  Feature Engineering",   file: "cheatsheets/06_feature_engineering.md" },
+    { label: "📈  Model Evaluation",      file: "cheatsheets/07_model_evaluation.md" },
+    { label: "🧠  Deep Learning (Keras)", file: "cheatsheets/08_deep_learning_keras.md" },
+    { label: "📐  Statistics for ML",     file: "cheatsheets/09_statistics_for_ml.md" },
+  ];
+
+  const list    = document.getElementById("topic-list");
+  const content = document.getElementById("content");
+
+  marked.setOptions({ breaks: true, gfm: true });
+
+  function loadTopic(index) {
+    document.querySelectorAll(".topic-btn").forEach((b, i) => {
+      b.classList.toggle("active", i === index);
+    });
+    content.innerHTML = '<div id="loading">Loading...</div>';
+
+    fetch(TOPICS[index].file)
+      .then(r => { if (!r.ok) throw new Error("Not found"); return r.text(); })
+      .then(md => {
+        content.innerHTML = marked.parse(md);
+        content.querySelectorAll("pre code").forEach(el => hljs.highlightElement(el));
+        document.getElementById("main").scrollTop = 0;
+      })
+      .catch(() => {
+        content.innerHTML = "<p style='color:#f85149'>Could not load cheat sheet.</p>";
+      });
+  }
+
+  TOPICS.forEach((t, i) => {
+    const btn = document.createElement("button");
+    btn.className = "topic-btn";
+    btn.textContent = t.label;
+    btn.onclick = () => loadTopic(i);
+    list.appendChild(btn);
+  });
+
+  loadTopic(0);
+</script>
+</body>
+</html>
